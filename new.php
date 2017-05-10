@@ -5,15 +5,19 @@ if($_SESSION['authenticated'] != true){
 	$url = 'index.php';
 	header( "Location: $url" );
 }else{
-
 	$username = $_SESSION['username'];
 	if (isset($_POST['name']) and isset($_POST['note'])){
 
 		$name = $_POST['name'];
 		$note = $_POST['note'];
-		$id = $_SESSION['user_id'];
 
-		$query = "INSERT INTO `notes`(`user_id`, `name`, `note`) VALUES ('$id', '$name','$note')";
+		if(isset($_SESSION['user_id'])){
+			$id = $_SESSION['user_id'];
+		}
+
+		$date = date('d/m/y');
+
+		$query = "INSERT INTO `notes`(`user_id`, `name`, `note`, `date`) VALUES ('$id', '$name','$note','$date')";
 		$result2 = mysqli_query($connection, $query) or die("error" . mysqli_error($connection));
 		
 		$url = 'notes.php';
@@ -24,13 +28,13 @@ if($_SESSION['authenticated'] != true){
 <html>
 <head>
 	<title>Notes</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="style.php">
 	<link rel="icon" href="favicon.ico" type="image/x-icon"/>
 	<style type="text/css">
 		.form input, .form textarea {
 			font-family: "Roboto", sans-serif;
 			outline: 0;
-			background: #f2f2f2;
+			background: #ded4d4;
 			width: 100%;
 			border: 0;
 			margin: 0 0 15px;

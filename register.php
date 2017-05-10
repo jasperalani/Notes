@@ -7,7 +7,9 @@ if (isset($_POST['username']) and isset($_POST['password'])){
   $username = $_POST['username'];
   $password = $_POST['password'];
 
-  $sql = mysqli_query($connection, "INSERT INTO `users`(`username`, `password`) VALUES ('$username','$password')");
+  $sql = mysqli_query($connection, "INSERT INTO `users`(`username`, `password`, `background`) VALUES ('$username','$password','66B2FF')");
+
+  $_SESSION['errorMsg'] = "Account created.";
 
   $url = 'index.php';
   header("Location: $url");
@@ -17,7 +19,7 @@ if (isset($_POST['username']) and isset($_POST['password'])){
 <html>
 <head>
   <title>Contacts</title>
-  <link rel="stylesheet" href="style.css" >
+  <link rel="stylesheet" href="style.php" >
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style type="text/css">
     #register {
@@ -53,7 +55,7 @@ if (isset($_POST['username']) and isset($_POST['password'])){
           </div>
           <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
           <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-          <p><a id="register" href="index.php">Login</a></p>
+          <p><a id="register" href="index.php">Already have an account?</a></p>
         </form>
       </div>
     </div>

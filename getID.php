@@ -8,7 +8,5 @@ $result = mysqli_query($connection, "SELECT `ID` FROM `users` WHERE `username` =
 $row = mysqli_fetch_array($result);
 $_SESSION['user_id'] = $row[0];
 
-$url = "notes.php";
-header( "Location: $url" );
-
+header( "Location: /notes.php" );
 ?>

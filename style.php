@@ -1,7 +1,17 @@
+<?php
+session_start();
+header("Content-type: text/css");
+$background_ = '66B2FF';
+if(isset($_SESSION['background'])){
+	$background_ = $_SESSION['background'];
+}
+?>
+
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
 
 body {
-	background-color: #66B2FF;
+	background-color: <?=$background_?>;
+	font-family: 'Roboto', sans-serif;
 }
 
 .title {
@@ -22,7 +32,7 @@ h2 {
 }
 
 #new {
-	display: inherit;
+	display: inline;
 	margin-top: 0px;
 	color: white;
 	text-decoration: none;
@@ -78,17 +88,29 @@ textarea {
 	color: grey;
 	text-decoration: none;
 	float: left;
-	font-size: 10px;
+	font-size: 12px;
+	margin-top: 10px;
 }
 
 .form:hover #removeNote {
 	display: initial;
 }
 
+hr {
+	width: 50%;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#note {
+	margin-top: 0.3em;
+}
+
 /* Form */
 
 .form-signin-heading {
 	margin-top: 0px !important;
+	margin-bottom: 0.3em;
 }
 
 .login-page {
@@ -112,7 +134,7 @@ textarea {
 .form input, .form textarea {
 	font-family: "Roboto", sans-serif;
 	outline: 0;
-	background: #f2f2f2;
+	background: #ded4d4;
 	width: 100%;
 	border: 0;
 	margin: 0 0 15px;
@@ -185,7 +207,7 @@ textarea {
 }
 
 /* Dropdown content */
-.dropbtn {
+.dropbtn, .dropbtn1 {
 	color: white;
 	padding: 16px;
 	font-size: 16px;
@@ -194,7 +216,7 @@ textarea {
 }
 
 /* The container <div> - needed to position the dropdown content */
-.dropdown {
+.dropdown, .dropdown1 {
 	position: relative;
 	display: inline-block;
 }
@@ -217,8 +239,16 @@ textarea {
 	display: block;
 }
 
+.dropdown-content1 p {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
 /* Change color of dropdown links on hover */
 .dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content1 p:hover {background-color: #f1f1f1}
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
@@ -228,4 +258,20 @@ textarea {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
 	background-color: #3e8e41;
+}
+
+.dropdown1:hover .dropdown-content1 {
+	display: block;
+}
+
+.dropdown1:hover .dropbtn1 {
+	display: none;
+}
+
+.dropdown-content1 {
+	display: none;
+	background-color: #f9f9f9;
+	min-width: wrap;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
 }
