@@ -1,5 +1,16 @@
-# Notes
+## Install
 
-A simple sticky notes web app.
+$ npm install --save gulp gulp-sass gulp-changed gulp-minify jquery
+$ docker-compose up
 
-Import notes.sql into phpMyAdmin and setup database in connect.php
+## Setup .env file
+# Copy and paste then change these values
+APP_NAME=project
+
+MYSQL_DATABASE=project
+
+MYSQL_USER=root
+
+MYSQL_PASSWORD=password
+
+MYSQL_ROOT_PASSWORD=password
